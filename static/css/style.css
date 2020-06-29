@@ -1,0 +1,186 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+html{
+	scroll-behavior:smooth;
+}
+
+body{
+			margin: 0;
+			padding: 0;
+
+}
+
+label{
+    font-size:21px;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+
+
+nav ul a{
+	background-color:#007bff ;
+}
+
+.header{
+	position:fixed;
+	width:100%;
+	z-index:99;
+}
+
+.header:hover{
+		background-color:white;
+	    /*transition: background-color ease 0.3s;*/
+
+}
+.header:not(:hover){
+
+	color:blue;
+	transition: background-color ease 1s;
+}
+
+header:hover{
+		background-color:white;
+	transition: background-color ease 0.3s;
+}
+header:not(:hover){
+
+	color:blue;
+
+	transition: background-color ease 0.3s;
+}
+
+
+.abc{
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	font-size: 26px;
+	text-shadow: 1px 1px #555;
+	
+	
+}
+
+.card a{
+	width: 60%;
+}
+
+.carousel-item img{
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+label{
+	font-size: 18px;
+}
+
+input:hover{
+	border-bottom: 2px solid black;
+}
+
+
+.space{
+	position:relative;
+	height:73px;
+}
+
+
+input[type=submit],input[type=reset]{
+	
+	font-size: 16px;
+}
+
+form p{
+	padding: 2px;
+	color: red;
+}
+
+.box{
+	position: relative;
+	width: 90%;
+	height: 90vh;
+	display: flex;
+	align-items: center;
+}
+
+.login_class{
+		
+			display:flex;
+			justify-content: center;
+			align-items:center;
+
+			}
+
+.login_class{
+
+	box-shadow: 4px 12px 12px #94C4F9;
+}
+
+
+/*
+footer{
+			clear: both;
+			width: 100%;
+			display: flex;
+			padding-top:10px;
+			bottom:0;
+}
+*/
+/*
+footer{
+position:relative;
+height:20px;
+margin-top:-0px;
+clear:both;
+
+}
+*/
+
+
+.cards{
+
+	display:inline-block;
+	margin-left:0px;
+    margin-top:30px;
+	height: auto;
+	width:250px;
+	background-color: #fff;
+
+
+}
+
+
+
+.image{
+margin-left:1%;
+}
+
+#more {display: none;}
+
+
+/*
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+	
+}*/
+
+form  table p{
+	color: black;
+}
+
+
+
