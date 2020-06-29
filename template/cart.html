@@ -1,0 +1,178 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+
+<link rel="icon" href="{% static 'images/shopping-icon.webp '%}" type="image/gif" sizes="16x16">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css '%}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary ">
+ <h2 class="p-1 text-white" >
+	E-Shopping..</h2>
+  <a class="navbar-brand text-white" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   
+     
+     
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active ml-4">
+        <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-white" href="/#products">Products <span class="sr-only">(current)</span></a>
+      </li>
+      
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-white" href="/#offerszone">OfferZone <span class="sr-only">(current)</span></a>
+      </li> 
+         
+         
+
+	
+      
+      
+    </ul>
+    
+    
+    
+    
+    <ul class="navbar-nav ml-auto">
+
+
+
+        <li class="nav-item active mr-5">
+		  <a class="nav-link text-white" href="/buy"><h6>Buy</h6> <span class="sr-only">(current)</span></a>
+      </li>
+
+        <li class="nav-item active">
+        <a class="nav-link text-white" href="{% url 'accounts:logout' %}"><h3><i class="fas fa-user-circle"></i></h3> <span class="sr-only">(current)</span></a>
+      </li>
+
+
+      
+
+      
+  
+	
+      
+      
+    </ul>
+   
+  </div>
+</nav>
+
+	</header>
+	
+<div class="space">
+	
+</div>
+<div class="container-fluid">
+<section class="bg-light">
+
+	<div class="container-fluid">
+	
+	<div><hr/><h3 class="ml-4 text-primary">Cart Products  </h3></div>
+
+		<div class="row">
+			
+		
+			{% if items %}
+
+            {% for i in items %}
+
+		
+			<div class="col-12 col-md-6 col-lg-3 ">
+		
+		
+			<div class="cards m-2">
+  <img class="card-img-top" src="{{i.prdimage}}" width="150" height="150" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title text-primary">{{i.prdname}} </h5>
+    <p class="card-text "> <s>50 per Kg</s> {{i.prdprice}} per Kg</p>
+    <p class="card-text "> Qty : {{i.qty}}  =  Rs  : {{i.get_price}} </p>
+    <a href="/buy" style="width:60%;" class="btn btn-primary">Buy</a>
+  </div>
+</div>
+
+		</div>
+            {% endfor %}
+
+            {% else %}
+            <div><hr/><h4 class="ml-4 text-primary"> No Cart Products Available</h4></div>
+
+            {% endif %}
+					
+		
+		</div>
+
+		
+		
+	</div>
+	
+</section>
+	</div>
+
+	
+	<footer class="page-footer font-small white pt-4 ">
+
+<div class="footer-copyright text-center py-0 bg-primary text-white">© 2020 Copyright:
+    <a href="https://github.com/kvsujith" target="_blank" class="text-white"> kvsujith</a>
+  </div>
+
+
+</footer>
+
+
+<style>
+	/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: outset 0 0 0px grey;
+  border-radius: 5px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0275d8;
+}
+
+</style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

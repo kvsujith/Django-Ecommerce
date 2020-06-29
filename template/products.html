@@ -1,0 +1,158 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Products</title>
+
+<link rel="icon" href="{% static 'images/shopping-icon.webp '%}" type="image/gif" sizes="16x16">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+<header class="" >
+
+<nav class="navbar navbar-expand-lg  ">
+ <h2 class="p-1 text-primary " >
+	E-Shopping..</h2>
+  <a class="navbar-brand text-primary" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active ml-4">
+        <a class="nav-link text-primary bg-transparent " href="/"><h4> <strong>Home</strong></h4> <span class="sr-only">(current)</span></a>
+      </li>
+
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-primary bg-transparent" href="#products"><h4><strong>Products</strong></h4> <span class="sr-only">(current)</span></a>
+      </li>
+
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-primary bg-transparent" href="#offerszone"><h4><strong>OfferZone</strong></h4> <span class="sr-only">(current)</span></a>
+      </li>
+
+
+
+
+
+
+    </ul>
+
+
+
+
+    <ul class="navbar-nav ml-auto ">
+      <li class="nav-item active mr-5">
+		  <a class="nav-link text-primary bg-transparent" href="#"><h3><i class="fas fa-cart-arrow-down"></i></h3> <span class="sr-only">(current)</span></a>
+      </li>
+
+        {% if user.is_authenticated %}
+
+        <li class="nav-item active">
+            <a class="nav-link text-primary bg-transparent mr-auto" href="#"><b>Hello, {{user.first_name}} </b></a>
+
+      </li> <li class="nav-item active">
+            <a class="nav-link text-primary bg-transparent mr-auto" href="{% url 'accounts:logout' %}"><h6>Logout </h6></a>
+
+      </li>
+        {% else %}
+           <li class="nav-item active">
+        <a class="nav-link text-primary bg-transparent mr-auto" href="{% url 'accounts:register' %}"><h3><i class="fas fa-user-circle"></i></h3> <span class="sr-only">(current)</span></a>
+      </li>
+        {% endif%}
+
+    </ul>
+   
+  </div>
+</nav>
+
+	</header>
+	
+<div class="space"></div>
+
+
+<div class="container-fluid">
+
+<section class="bg-light">
+
+	<div class="container-fluid">
+	
+        <div><hr/><h3 class="ml-4 text-primary"><b>Products Available</b></h3></div>
+	
+	<div class="row">
+
+            <!-- row starts here-->
+			
+
+        {% for i in prods %}
+
+
+		<div class="col-12 col-sm-6 col-md-6 col-lg-3 ">
+
+			<div class="cards  animated fadeInUp ">
+                 <img class="card-img-top" src="{{i.prdimage.url}}" width="150" height="150" alt="Card image cap">
+                    <div class="card-body">
+                        <h6 class="card-title text-primary"><b>{{i.prdname}}</b> </h6>
+                        <p class="card-text ">{% if i.prdoffer%}<s>{{i.prdprice}} {{i.prditemstypes}}</s>  &nbsp; <b class="text-success" >Rs {{i.prdofferprice}} per {{i.prditemstypes}}  </b> {%else%} <b class="text-success" >Rs {{i.prdprice}} {{i.prditemstypes}} </b>  {%endif%} </p>
+                        <a href="/cart/{{i.prdid}}" style="width:60%;" class="btn btn-primary">Cart</a>
+
+                    </div>
+            </div>
+
+
+		</div>
+
+        {% endfor %}
+
+				
+
+			 <!-- row ends here-->
+		
+	</div>
+		
+		
+		
+</div>
+	
+</section>
+
+<!-- container ends here -->
+</div>
+
+	
+
+<footer class="page-footer font-small white pt-4 ">
+
+<div class="footer-copyright text-center py-0 bg-primary text-white">© 2020 Copyright:
+    <a href="https://github.com/kvsujith" target="_blank" class="text-white"> kvsujith</a>
+  </div>
+
+
+</footer>
+
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>
+
+</body>
+</html>

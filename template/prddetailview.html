@@ -1,0 +1,59 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Welcome to Shopping</title>
+<link rel="icon" href="{% static 'images/shopping-icon.webp' %}" type="image/gif" sizes="16x16">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css '%}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="container-fluid">
+<section class="p-4" style="height: 100vh">
+
+	<div class="container-fluid">
+
+		<div class="row align-items-center">
+
+		<div class="col-md-6 col-12">
+			<img src="media/picturess/ashirwad-atta-10kg-250x250.png" width="300" height="300" class="image-fluid rounded-circle">
+			</div>
+
+		<div class="col-md-6 col-12">
+			<h3 class="text-">
+				<h1>{{abc.prdname}}</h1> <br>
+
+			</h3>
+			<h3 class="text-primary">
+				<h1>{{abc.id}}</h1>
+			</h3>
+
+			<blockquote class="blockquote" >
+						<p>
+							{{abc.prdprice}}
+						</p>
+						<footer>{{abc.prdstock}}</footer>
+			</blockquote>
+
+			</div>
+			</div>
+
+	</div>
+</section>
+
+	</div>
+
+Name of the Product :
+ID of the Product :
+Price of the Product : <h1></h1>
+Category of the Product : <h1>{{abc.prdcategory}}</h1>
+Quantity the Product : <h1></h1>
+</body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css">
+</html>

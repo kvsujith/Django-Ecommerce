@@ -1,0 +1,368 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+
+<link rel="icon" href="{% static 'images/shopping-icon.webp '%}" type="image/gif" sizes="16x16">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css '%}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary ">
+ <h2 class="p-1 text-white" >
+	E-Shopping..</h2>
+  <a class="navbar-brand text-white" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   
+     
+     
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active ml-4">
+        <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-white" href="products">Products <span class="sr-only">(current)</span></a>
+      </li>
+      
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-white" href="/">OfferZone <span class="sr-only">(current)</span></a>
+      </li> 
+         
+         
+
+	
+      
+      
+    </ul>
+    
+    
+    
+    
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active mr-5">
+		  <a class="nav-link text-white" href="{% url 'shop:cartPage' %}"><h3><i class="fas fa-cart-arrow-down"></i></h3> <span class="sr-only">(current)</span></a>
+      </li>
+      
+           <li class="nav-item active">
+        <a class="nav-link text-white" href="{% url 'accounts:logout'%}"><h3><i class="fas fa-user-circle"></i></h3> <span class="sr-only">(current)</span></a>
+      </li>
+      
+  
+	
+      
+      
+    </ul>
+   
+  </div>
+</nav>
+ {% if messages %}
+<div class="alert  alert-danger" role="alert">
+
+    {% for i in messages %}
+    {{i}}
+    {% endfor %}
+</div>
+    {% endif %}
+	</header>
+	
+<div class="space">
+
+</div>
+
+
+
+<div class="container-fluid">
+
+  
+   <section class="ftco-section ftco-cart mb-5 ">
+   
+   
+			<div class="container col-12" >
+			
+				<div class="row" >
+					<table class="table" >
+						    <thead style="position:sticky" class="thead-primary bg-success text-white">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>Product name</th>
+						        <th>Price</th>
+						        <th>Quantity</th>
+						        <th>Total</th>
+						      </tr>
+							</thead></table>
+				<div style="overflow-y:auto;height:600px;width:100%;">
+    			<div class="col-12 ftco-animate fadeInUp ftco-animated">
+    				<div class="cart-list">
+	    				<table class="table" >
+
+						    <tbody>
+								{% for i in orders %}
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="/delete/{{i.id}}"><span class="ion-ios-close btn btn-danger">X</span></a></td>
+
+						        <td class="image-prod"><img class="img" height="60" width="60" src="{{i.prdimage}}"></td>
+
+						        <td class="product-name">
+						        	<h5> {{i.prdname}} </h5>
+
+						        </td>
+
+						        <td class="price">$ {{i.prdprice}} </td>
+
+						        <td class="quantity">
+						        	<div class="input-group mb-3 col-lg-8 mr-auto ">
+										<a class="btn btn-primary" href="/reduce/{{i.id}}">-</a>
+										<h5 class="ml-auto mr-auto form-control input-number">{{i.qty}}</h5>
+					          		<a class="btn btn-secondary" href="/increase/{{i.id}}">+</a>
+									</div>
+					          </td>
+
+
+
+						        <td class="total">{{i.get_price}} </td>
+						      </tr><!-- END TR-->
+								{% endfor %}
+
+
+
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+				</div>
+<form class="info" action="/buy" method="post">
+	{% csrf_token %}
+    		<div class="row justify-content-end bg-light">
+    		
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate fadeInUp ftco-animated">
+
+    				<div class="cart-total mb-3">
+    					<h3>Enter Your Details</h3>
+				<!--	<form action="#" class="info"> -->
+
+	              <div class="form-group">
+
+                    <div class="col-md-8 mb-3">
+      <label for="validationServer01">First Name</label>
+      <input type="text" class="form-control is-valid" id="validationServer01" name="fname" placeholder="First Name" required>
+						<div class="valid-feedback">
+        verified
+      </div>
+      <div class="invalid-feedback">
+        please Enter your Name
+      </div>
+    </div>
+					  <div class="col-md-8 mb-3">
+      <label for="validationServer02">Last Name</label>
+      <input type="text" class="form-control is-valid" id="validationServer02" name="lname" placeholder="Last Name" required>
+						<div class="valid-feedback">
+        Looks Good
+      </div>
+						  <div class="invalid-feedback">
+        please Enter your Name
+      </div>
+
+    </div>
+					  <div class="col-md-8 mb-3">
+     			 <label for="validationServer03">Mobile Number</label>
+      			<input type="text" class="form-control is-valid" id="validationServer03" name="mob1" placeholder="7994-037-362" required>
+						<div class="valid-feedback">
+       				 Looks Good
+      					</div>
+						  <div class="invalid-feedback">
+       						 please Enter your Name
+     					 </div>
+
+    						</div>
+    						<div class="col-md-8 mb-3">
+     			 <label for="validationServer07">Alternative Number</label>
+      			<input type="text" class="form-control is-valid" id="validationServer07" name="mob2" placeholder="9447-626-374" required>
+						<div class="valid-feedback">
+       				 Looks Good
+      					</div>
+						  <div class="invalid-feedback">
+       						 please Enter your Name
+     					 </div>
+
+    						</div>
+
+
+	              </div>
+
+    				</div>
+
+    			</div>
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate fadeInUp ftco-animated">
+    				<div class="cart-total mb-3">
+    					<h3>Estimate shipping and tax</h3>
+    					<i>Enter your destination to get a Delivery estimate</i>
+  					
+	              <div class="form-group">
+	              	<label for="validationServer09">Choose Location</label>
+      			<select class="form-control is-valid" id="validationServer09" name="location" >
+      				<option value="Koduvayur" selected>Koduvayur</option>
+      				<option value="Ethanur">Ethanur</option>
+      				<option value="Vemballur">Vemaballur</option>
+      				<option value="Kakakayur">Kakkayur</option>
+      				<option value="Pallasana">Pallasana</option>
+      				<option value="Thatthamanagalam">Thatthamanagalm</option>
+      				<option value="Kinsaasey">Kinassery</option>
+      			</select>
+						<div class="valid-feedback">
+       				 Looks Good
+      					</div>
+						  <div class="invalid-feedback">
+       						 please Enter your Name
+     					 </div>
+	              </div>
+	              
+	              <div class="form-group">
+	              	<label for="validationServer05">Delivery Address</label>
+      			<textarea class="form-control is-valid" rows="5" id="validationServer05" name="address" placeholder="Address Here" required></textarea>
+						<div class="valid-feedback">
+       				 Looks Good
+      					</div>
+						  <div class="invalid-feedback">
+       						 please Enter your Name
+     					 </div>
+	              </div>
+	              <div class="form-group">
+	              	<label for="validationServer06">Zip code</label>
+      			<input type="text" class="form-control is-valid" id="validationServer06" name="zipcode" placeholder="678501" required>
+						<div class="valid-feedback">
+       				 verified
+      					</div>
+						  <div class="invalid-feedback">
+       						 please your valid zip code
+     					 </div>
+	              </div>
+
+    				</div>
+
+    			</div>
+    			
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate fadeInUp ftco-animated">
+    				
+    				<table border="0" width="320" cellpadding="8" cellspacing="5">
+    					<thead>
+    					<tr>
+    							<th colspan="2"><h3>Cart Totals</h3></th>
+
+    						</tr>
+    						<tr>
+    							<th>Subtotal</th>
+
+    							<td align="right">{{subtotal}}</td>
+    						</tr>
+						<tr>
+    							<th>Delivery</th>
+    							<td align="right">{{delivery}}</td>
+    						</tr>
+						<tr>
+    							<th>Discount</th>
+    							<td align="right">{{discount}}</td>
+    						</tr>
+						<tr>
+    							<th colspan="2"><hr size="2"></th>
+
+    						</tr>
+
+						<tr>
+    							<th>Total</th>
+    							<td align="right">{{grandtotal}}</td>
+    						</tr>
+    						
+    						<tr class="py-6">
+    							<td colspan="2" align="right">
+    								<input type="submit" value="Place Order"  class="btn btn-primary  px-4">
+    							</td>
+
+    						</tr>
+    						
+    					</thead>
+    				</table>
+
+					
+    			</div>
+    			
+				
+    		</div>
+    		</form>
+    		
+			</div>
+			
+		</section>
+		
+
+
+
+	</div>
+	
+	
+
+
+<style>
+	/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: outset 0 0 0px grey;
+  border-radius: 5px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:transparent;
+}
+
+</style>
+
+<footer class="page-footer font-small white pt-4 ">
+
+  <div class="footer-copyright text-center py-0 bg-primary text-white">© 2020 Copyright:
+    <a href="https://github.com/kvsujith" target="_blank" class="text-white"> kvsujith</a>
+  </div>
+
+
+</footer>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<script src="{% static 'js/script.js '%}"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+<header >
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary ">
+ <h2 class="p-1 text-white" >
+	E-Shopping..</h2>
+  <a class="navbar-brand text-white" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   
+     
+     
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active ml-4">
+        <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-white" href="/#products">Products <span class="sr-only">(current)</span></a>
+      </li>
+      
+           <li class="nav-item active  ml-4">
+        <a class="nav-link text-white" href="/#offerszone">OfferZone <span class="sr-only">(current)</span></a>
+      </li> 
+         
+         
+
+	
+      
+      
+    </ul>
+    
+    
+    
+    
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active mr-5">
+		  <a class="nav-link text-white" href="/"><h3><i class="fas fa-cart-arrow-down"></i></h3> <span class="sr-only">(current)</span></a>
+      </li>
+         <li class="nav-item active">
+        <a class="nav-link text-white mr-auto" href="{% url 'accounts:login' %}"><h3><i class="fas fa-user-circle"></i></h3> <span class="sr-only">(current)</span></a>
+      </li>
+      
+  
+	
+      
+      
+    </ul>
+   
+  </div>
+</nav>
+
+	</header>
+
+<div class="space">
+
+
+
+</div>
+
+<div class="container-fluid">
+
+<section>
+	<img src="{% static 'images/register.png' %}" width="100%" height="500px">
+
+</section>
+	
+</div>
+
+<div class="container-fluid">
+
+	<div class="row ">
+		<div class="col-12 col-xl-6 text-justify text-primary  ">
+	
+		<h1 class="text-success animated fadeInLeftBig "> We are the </h1>
+		<h3 class="text-success"> We are the </h3>
+            <p class="animated fadeInLeft">
+
+Flight Chabot applications streamline interactions between people and services, 
+enhancing customer experience. At the same time, they offer companies new opportunities to 
+improve the customer’s engagement process and operational efficiency by reducing the 
+typical cost of customer service. Chat bots can make a huge difference to customer service by Aeropolis
+
+
+Flight Chabot applications streamline interactions between people and services, 
+enhancing customer experience. At the same time, they offer companies new opportunities to 
+improve the customer’s engagement process and operational efficiency by reducing the 
+typical cost of customer service. Chat bots can make a huge difference to customer service by Aeropolis
+
+
+Flight Chabot applications streamline interactions between people and services, 
+enhancing customer experience. At the same time, they offer companies new opportunities to 
+improve the customer’s engagement process and operational efficiency by reducing the 
+typical cost of customer service. Chat bots can make a huge difference to customer service by Aeropolis
+
+
+Flight Chabot applications streamline interactions between people and services, 
+enhancing customer experience. At the same time, they offer companies new opportunities to 
+improve the customer’s engagement process and operational efficiency by reducing the 
+typical cost of customer service. Chat bots can make a huge difference to customer service by Aeropolis
+
+
+</p>
+
+	</div>
+		
+			
+	
+	
+	<div class="col-md-6 mt-5">
+
+        {% for msg in  messages%}
+        <h4 class="bg-danger text-white">{{msg}}</h4>
+        {% endfor %}
+		
+	<form name="form1" class="ml-3" action="{% url 'accounts:register' %}" onSubmit="return validate()" method="post" >
+        {% csrf_token %}
+	
+  <div class="form-row">
+   
+    <div class="form-group col-md-6">
+      <label for="fname">First Name</label>
+      <input type="text" class="form-control" id="fname" name="fname" placeholder="John"  required>
+      <p id="errfname"></p>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lname">Last Name</label>
+      <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith" required>
+      <p id="errlname"></p>
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Johnsmith@emailcom" required>
+    <p id="erremail"></p>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="number" class="form-control" id="phone" name="phone" placeholder="799-433-433" required>
+    <p id="errphone"></p>
+  </div>
+  
+  <div class="form-row">
+   
+    <div class="form-group col-md-6">
+      <label for="password1">Password</label>
+      <input type="password" class="form-control" id="password1" name="pswd1" placeholder="" required>
+      
+    </div>
+    <div class="form-group col-md-6">
+      <label for="password2">Confirm Password</label>
+      <input type="password" class="form-control" id="password2" name="pswd2" placeholder="" required>
+      
+    </div>
+    <p id="passwd"></p>
+    
+  </div>
+  
+  <div class="form-row">
+   
+    <div class="form-group col-md-6">
+    
+      <input type="submit" value="Sign Up" class="btn btn-primary form-control">
+    </div>
+    
+    <div class="form-group col-md-6">
+    
+      <input type="reset" class="btn btn-danger form-control">
+    </div>
+    
+  </div>
+  
+</form>
+	
+
+	
+	</div>
+	</div>
+	
+	  
+	
+</div>
+
+
+
+<footer class="page-footer font-small white pt-4 ">
+
+<div class="footer-copyright text-center py-0 bg-primary text-white">© 2020 Copyright:
+    <a href="https://github.com/kvsujith" target="_blank" class="text-white"> kvsujith</a>
+  </div>
+
+
+</footer>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+</body>
+</html>
+
+
